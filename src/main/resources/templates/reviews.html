@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Review</title>
+</head>
+<body>
+	<h1>List of all reviews on review site</h1>
+
+	<ul>
+		<!-- For each review in reviews map -->	
+		<li th:each="review : ${reviews}">
+			<!-- link that review to the URL of the review's Id-->
+			<!--  -->	
+			<a th:href="|@{/reviews/}${review.movieId}|">
+				<span th:text="${review.title}"></span>
+			</a>
+		</li>
+	</ul>
+</body>
+</html>
