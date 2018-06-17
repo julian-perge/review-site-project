@@ -1,5 +1,6 @@
 package org.julian.reviewsiteproject;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,26 +16,15 @@ public class ReviewSiteRepository
 	// id, title, imgUrl, category, content, collection of tags
 	public ReviewSiteRepository()
 	{
-		Review terminatorReview = new Review(1L, "Terminator", "terminatorReviewImg", "Action", "This is a terminator review, and the movie came out 1984");
-		terminatorReview.addTag("cyborg");
-		terminatorReview.addTag("time travel");
-		terminatorReview.addTag("future war");
-		// making sure tag list works
-		terminatorReview.addTag("testing");
+		Review terminatorReview = new Review(1L, "Terminator", 
+				"terminatorReviewImg", "Action", "This is a terminator review, and the movie came out 1984", 
+				Arrays.asList("cyborg", "time travel", "future war", "testing"));
 		
-		Review theShiningReview = new Review(2L, "The Shining", "theShiningReviewImg", "Horror", "The Shining is scary");
-		theShiningReview.addTag("hotel");
-		theShiningReview.addTag("identical twins");
-		theShiningReview.addTag("isolation");
+		Review theShiningReview = new Review(2L, "The Shining", "theShiningReviewImg", "Horror", "The Shining is scary", 
+				Arrays.asList("hotel", "identical twins", "isolation", "testing"));
 		
-		theShiningReview.addTag("testing");
-		
-		Review jurassicParkReview = new Review(3L, "Jurassic Park", "jurassicParkImg", "Adventure", "Dinos are adorable without teeth");
-		jurassicParkReview.addTag("dinosuar");
-		jurassicParkReview.addTag("theme park");
-		jurassicParkReview.addTag("island");
-		
-		jurassicParkReview.addTag("testing");
+		Review jurassicParkReview = new Review(3L, "Jurassic Park", "jurassicParkImg", "Adventure", "Dinos are adorable without teeth", 
+				Arrays.asList("dinosaur", "theme park", "island", "testing"));		
 		
 		this.addReview(terminatorReview);
 		this.addReview(theShiningReview);
@@ -49,7 +39,7 @@ public class ReviewSiteRepository
 	
 	public void addReview(Review review)
 	{
-		reviewRepository.put(review.getMovieId(), review);
+		reviewRepository.put(review.getId(), review);
 	}
 
 	public Collection<Review> getReviews()
@@ -57,9 +47,9 @@ public class ReviewSiteRepository
 		return reviewRepository.values();
 	}
 
-	public Review findById(Long movieId)
+	public Review findById(Long i)
 	{
-		return reviewRepository.get(movieId);
+		return reviewRepository.get(i);
 	}
 	
 	public Collection<String> getAllTags()
@@ -73,7 +63,7 @@ public class ReviewSiteRepository
 		return reviewTags;
 	}
 	
-	public Collection<Review> findByTag(String tag)
+	public Collection<Review> findReviewsByTag(String tag)
 	{
 		Collection<Review> reviewsThatContainTag = new HashSet<Review>();
 		

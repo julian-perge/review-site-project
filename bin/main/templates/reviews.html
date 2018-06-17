@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>All Reviews</title>
 	<link rel="stylesheet" type="text/css" media="all"
@@ -13,7 +13,7 @@
 		<li th:each="review : ${reviews}">
 			<!-- link that review to the URL of the review's Id-->
 			<!--  -->
-			<a th:href="|@{/reviews/}${review.movieId}|">
+			<a th:href="|@{/reviews/}${review.id}|">
 					<span th:text="|${review.title} - |"></span>
 			</a>
 			<span th:each="tag : ${review.tags}">

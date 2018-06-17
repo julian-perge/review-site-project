@@ -5,12 +5,14 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashSet;
+
 import org.junit.Test;
 
 public class ReviewSiteRepositoryTest
 {
 	ReviewSiteRepository reviewRepo = new ReviewSiteRepository();
-	Review review = new Review(999L, "Test Title", "testImgUrl", "category", "content");
+	Review review = new Review(999L, "Test Title", "testImgUrl", "category", "content", new HashSet<>());
 
 	@Test
 	public void shouldAddNewReviewToSiteRepo()
@@ -44,6 +46,6 @@ public class ReviewSiteRepositoryTest
 		Review underTest = reviewRepo.findById(999L);
 		
 		Long expectedReviewId = 999L;
-		assertThat(underTest.getMovieId(), is(equalTo(expectedReviewId)));
+		assertThat(underTest.getId(), is(equalTo(expectedReviewId)));
 	}
 }

@@ -1,27 +1,16 @@
 package org.julian.reviewsiteproject;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 public class Review {
-	private long id;
+	private Long id;
 	private String title;
 	private String imgUrl;
 	private String category;
 	private String content;
 	private Collection<String> tags;
 
-	public Review(long id, String title, String imgUrl, String category, String content) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.imgUrl = imgUrl;
-		this.category = category;
-		this.content = content;
-		this.tags = new HashSet<String>();
-	}
-
-	public long getMovieId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -51,4 +40,13 @@ public class Review {
 		tags.add(tag.replaceAll("\\s", ""));
 	}
 
+	public Review(Long id, String title, String imgUrl, String category, String content, Collection<String> tags) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.imgUrl = imgUrl;
+		this.category = category;
+		this.content = content;
+		this.tags = tags;
+	}
 }

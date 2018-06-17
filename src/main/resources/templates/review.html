@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 	<title th:text="${review.title}">Review Title</title>
-	<link rel="stylesheet" type="text/css" media="all"
-				href="/css/style.css" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
+
 <body>
-	<h1 th:text="${review.title}">Review Header</h1>
-	<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
-	<img th:src="|/images/${review.imgUrl}.jpg|" />
-	<h2>Category - <span th:text="${review.category}"></span> </h2>
+	<section class="title">
+		<h1 th:text="${review.title}">Review Header</h1>
+	</section>
 
-	<h3>Tags:
+	<section class="nav">
+		<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
+	</section>
 
-	</h3>
+	<section class="main-content">
 
-	<p th:text="${review.content}"></p>
+		<section class="images">
+			<img th:src="|/images/${review.imgUrl}.jpg|" />
+
+
+			<div class="keywords">
+				<section class="category">
+					<h3 th:text="|Category - ${review.category}|"></h3>
+				</section>
+				<section class="tags">
+					<h3>
+						<a th:href="|@{/reviews/tags}|">
+							Tags
+						</a>
+					</h3>
+					<ul>
+						<li th:each="tag : ${review.tags}">
+							<a href="|@{/tags/}${tag}|">
+								<span th:text="${tag}"></span>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</section>
+
+		<section class="content-of-review">
+			<span th:text="${review.content}"></span>
+		</section>
+
+	</section>
 </body>
+
 </html>

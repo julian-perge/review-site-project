@@ -23,7 +23,7 @@ public class ReviewSiteController
 	}
 	
 	@RequestMapping("/reviews/{id}")
-	public String getReview(@PathVariable(name="id")Long id,  Model model)
+	public String getReview(@PathVariable(name="id")Long id, Model model)
 	{
 		model.addAttribute("review", reviewRepository.findById(id));
 		return "review";
@@ -39,7 +39,7 @@ public class ReviewSiteController
 	@RequestMapping("/reviews/tags/{tag}")
 	public String getListOfMoviesFromTag(@PathVariable(name="tag")String tag,  Model model)
 	{
-		model.addAttribute("tags", reviewRepository.findByTag(tag));
-		return "tags";
+		model.addAttribute("reviews", reviewRepository.findReviewsByTag(tag));
+		return "tag";
 	}
 }
