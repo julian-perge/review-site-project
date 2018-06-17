@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Review</title>
+	<title th:text="${review.title}">Review Title</title>
+	<link rel="stylesheet" type="text/css" media="all"
+				href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<h1>Review Header for specific reviews 4 Reasons</h1>
+	<h1 th:text="${review.title}">Review Header</h1>
+	<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
+	<img th:src="|/images/${review.imgUrl}.jpg|" />
+	<h2>Category - <span th:text="${review.category}"></span> </h2>
+
+	<h3>Tags:
+
+	</h3>
+
+	<p th:text="${review.content}"></p>
 </body>
 </html>

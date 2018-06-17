@@ -46,11 +46,35 @@ public class ReviewSiteControllerTest
 	}
 	
 	@Test
-	public void shouldReturnModel() throws Exception
+	public void shouldReturnModelOfReviews() throws Exception
 	{
 		mvc.perform(get("/reviews"))
 				.andExpect(model()
 				.attribute("reviews", reviewRepo.getReviews()));
+	}
+	
+	@Test
+	public void getReviewShouldReturnReviewView() throws Exception
+	{
+		mvc.perform(get("/reviews/42"))
+				.andExpect(view()
+				.name(is(equalTo("review"))));
+	}
+	
+	@Test
+	public void shouldReturn2xxSuccessOfReview() throws Exception
+	{
+		mvc.perform(get("/reviews/42"))
+				.andExpect(status()
+				.is2xxSuccessful());
+	}
+	
+	@Test
+	public void shouldReturnModelOfReview() throws Exception
+	{
+		mvc.perform(get("/reviews/42"))
+				.andExpect(model()
+				.attribute("review", is(reviewRepo.findById(42L))));
 	}
 	
 	
