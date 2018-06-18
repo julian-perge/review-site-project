@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>All Tags</title>
+	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<h1>List of all tags for published reviews</h1>
+
+	<ul>
+		<!-- For each review in reviews map -->
+		<li th:each="tag : ${tags}">
+			<a th:href="|@{/reviews/tags/}${tag}|">
+        <span th:text="${tag}"></span>
+      </a>
+		</li>
+	</ul>
+</body>
+
+</html>

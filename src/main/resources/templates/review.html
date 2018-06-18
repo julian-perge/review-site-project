@@ -33,7 +33,7 @@
 					</h3>
 					<ul>
 						<li th:each="tag : ${review.tags}">
-							<a href="|@{/tags/}${tag}|">
+							<a th:href="|@{/reviews/tags/}${tag}|">
 								<span th:text="${tag}"></span>
 							</a>
 						</li>

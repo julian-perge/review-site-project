@@ -18,7 +18,7 @@
 			</a>
 			<span th:each="tag : ${review.tags}">
 				<a th:href="|@{/reviews/tags/}${tag}|">
-					<span th:text="|${tag}, |"></span>
+					<span th:text="${tag}"></span>
 				</a>
 			</span>
 		</li>

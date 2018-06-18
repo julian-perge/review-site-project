@@ -1,0 +1,12 @@
+.images, .keywords {
+  border: 1px solid black;
+}
+
+.reviewList {
+  font-size: 1.5em;
+}
+
+.content-of-review {
+  align-content: center;
+  font-style: italic;
+}
