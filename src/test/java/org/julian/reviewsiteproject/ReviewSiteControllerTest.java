@@ -49,4 +49,13 @@ public class ReviewSiteControllerTest
 										.andExpect(status().is2xxSuccessful())
 										.andExpect(model().attribute("review", is(review)));
 	}
+	
+	@Test
+	public void shouldReturnModelAndViewOfSearchedTagAndIs2xxSuccessful() throws Exception
+	{
+		mvc.perform(get("/reviews/tags"))
+		.andExpect(view().name(is(equalTo("tags"))))
+		.andExpect(status().is2xxSuccessful())
+		.andExpect(model().attribute("tags", is(repo.getAllTags())));
+	}
 }

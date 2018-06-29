@@ -18,8 +18,8 @@ public class ReviewSiteRepository
 	{
 		Review terminatorReview = new Review(1L, "Terminator", 
 				"terminatorReviewImg", "Action", "This is a terminator review, and the movie came out 1984", 
-				Arrays.asList("cyborg", "time travel", "future war", "testing"));
-		
+				Arrays.asList("cyborg", "time travel", "isolation", "testing"));
+				
 		Review theShiningReview = new Review(2L, "The Shining", "theShiningReviewImg", "Horror", "The Shining is scary", 
 				Arrays.asList("hotel", "identical twins", "isolation", "testing"));
 		
@@ -59,7 +59,6 @@ public class ReviewSiteRepository
 		for (Review review : getReviews()) {
 			reviewTags.addAll(review.getTags());
 		}
-		
 		return reviewTags;
 	}
 	
@@ -73,7 +72,6 @@ public class ReviewSiteRepository
 				reviewsThatContainTag.add(review);
 			}
 		}
-		
 		return reviewsThatContainTag;
 	}
 }
