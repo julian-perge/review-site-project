@@ -13,8 +13,8 @@
 		<!-- For each review in reviews map -->
 		<li th:each="tag : ${tags}">
 			<a th:href="|@{/reviews/tags/}${tag}|">
-        <span th:text="${tag}"></span>
-      </a>
+				<span th:text="${tag}"></span>
+			</a>
 		</li>
 	</ul>
 </body>

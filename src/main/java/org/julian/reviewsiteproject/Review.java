@@ -1,52 +1,78 @@
 package org.julian.reviewsiteproject;
 
+import java.util.Arrays;
 import java.util.Collection;
 
-public class Review {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Review
+{
+	@Id
+	@GeneratedValue
 	private Long id;
+
 	private String title;
 	private String imgUrl;
-	private String category;
-	private String content;
-	private Collection<String> tags;
 
-	public Long getId() {
+	@ManyToMany
+	private Collection<Tag> tags;
+
+	@ManyToOne
+	private Category category;
+
+	@Lob
+	private String content;
+
+	protected Review(){}
+
+	public Review(String title, String imgUrl, String content, Category category , Tag ...tags)
+	{
+		this.title = title;
+		this.imgUrl = imgUrl;
+		this.content = content;
+		this.category = category;
+		this.tags = Arrays.asList(tags);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return title + " - " + category;
+	}
+
+	public Long getId()
+	{
 		return id;
 	}
 
-	public String getTitle() {
+	public String getTitle()
+	{
 		return title;
 	}
 
-	public String getImgUrl() {
+	public String getImgUrl()
+	{
 		return imgUrl;
 	}
 
-	public String getCategory() {
+	public Category getCategory()
+	{
 		return category;
 	}
 
-	public String getContent() {
+	public String getContent()
+	{
 		return content;
 	}
-	
-	public Collection<String> getTags()
+
+	public Collection<Tag> getTags()
 	{
 		return tags;
-	}
-	
-	public void addTag(String tag)
-	{
-		tags.add(tag.replaceAll("\\s", ""));
-	}
-
-	public Review(Long id, String title, String imgUrl, String category, String content, Collection<String> tags) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.imgUrl = imgUrl;
-		this.category = category;
-		this.content = content;
-		this.tags = tags;
 	}
 }

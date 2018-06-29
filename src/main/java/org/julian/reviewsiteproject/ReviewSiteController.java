@@ -10,36 +10,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReviewSiteController
 {
 	@Autowired
-	ReviewSiteRepository reviewRepository;
+	private ReviewRepository reviewRepo;
+	@Autowired
+	private CategoryRepository catRepo;
+	@Autowired
+	private TagRepository tagRepo;
 	
 	// localhost:8080/reviews
 	// thuglyfe
 	
+	
 	@RequestMapping("/reviews")
 	public String getReviews(Model model)
 	{
-		model.addAttribute("reviews", reviewRepository.getReviews());
+		model.addAttribute("reviews", reviewRepo.findAll());
 		return "reviews";
 	}
 	
 	@RequestMapping("/reviews/{id}")
 	public String getReview(@PathVariable(name="id")Long id, Model model)
 	{
-		model.addAttribute("review", reviewRepository.findById(id));
+		model.addAttribute("review", reviewRepo.findOne(id));
 		return "review";
+	}
+	
+	@RequestMapping("/categories")
+	public String getCategories(Model model)
+	{
+		model.addAttribute("categories", catRepo.findAll());
+		return "categories";
+	}
+	
+	@RequestMapping("/categories/{id}")
+	public String getCategory(@PathVariable(name="id")Long id, Model model)
+	{
+		model.addAttribute("category", catRepo.findOne(id));
+		return "category";
 	}
 	
 	@RequestMapping("/reviews/tags")
 	public String getTags(Model model)
 	{
-		model.addAttribute("tags", reviewRepository.getAllTags());
+		model.addAttribute("tags", tagRepo.findAll());
 		return "tags";
 	}
 	
-	@RequestMapping("/reviews/tags/{tag}")
-	public String getListOfMoviesFromTag(@PathVariable(name="tag")String tag,  Model model)
+	@RequestMapping("/reviews/tags/{id}")
+	public String getListOfMoviesFromTag(@PathVariable(name="id")Long id,  Model model)
 	{
-		model.addAttribute("reviews", reviewRepository.findReviewsByTag(tag));
+		model.addAttribute("tag", tagRepo.findOne(id).toString());
 		return "tag";
 	}
 }

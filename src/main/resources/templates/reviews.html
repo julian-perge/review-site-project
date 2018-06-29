@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>All Reviews</title>
+	<title th:text="#{'reviews'}">All Reviews</title>
 	<link rel="stylesheet" type="text/css" media="all"
 				href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
@@ -9,13 +9,13 @@
 	<h1>List of all reviews on review site</h1>
 
 	<ul>
-		<!-- For each review in reviews map -->
+		<!-- For each review in reviews database -->
 		<li th:each="review : ${reviews}">
 			<!-- link that review to the URL of the review's Id-->
 			<!--  -->
 			<a th:href="|@{/reviews/}${review.id}|">
-					<span th:text="|${review.title} - |"></span>
-			</a>
+					<span th:text="|${review} - |"></span>
+			</a> -->
 			<span th:each="tag : ${review.tags}">
 				<a th:href="|@{/reviews/tags/}${tag}|">
 					<span th:text="${tag}"></span>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>All Categories</title>
+</head>
+
+<body>
+    <h1>All listed Categories</h1>
+    <ul>
+        <!-- For each category in category repo -->
+        <li th:each="category: ${categories}">
+            <a th:href="|@{/categories/}${category.id}|">
+                <span th:text="${category}"></span>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>
