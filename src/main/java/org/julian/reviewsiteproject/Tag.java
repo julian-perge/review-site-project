@@ -41,6 +41,11 @@ public class Tag
 		return Tag.class.hashCode();
 	}
 	
+	public Long getId()
+	{
+		return id;
+	}
+	
 	public String getName()
 	{
 		return name;

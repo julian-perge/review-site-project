@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest(ReviewSiteController.class)
+@WebMvcTest(ReviewsController.class)
 public class ReviewSiteControllerTest
 {
 //	@Autowired

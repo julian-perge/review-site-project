@@ -10,7 +10,7 @@
 <body>
   <h1 th:text="|List of movies from searched tag: ${tag}|"></h1>
   <ul>
-    <li th:each="review : ${reviews}">
+    <li th:each="review : ${tag.reviews}">
       <a th:href="|@{/reviews/}${review.id}|">
         <span class="reviewList" th:text="|${review.title}|"></span>
       </a>
