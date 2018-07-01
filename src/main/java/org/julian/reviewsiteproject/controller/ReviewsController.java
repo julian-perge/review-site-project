@@ -24,7 +24,7 @@ public class ReviewsController
 	}
 	
 	@RequestMapping("/reviews/{title}")
-	public String getReview(@PathVariable(name="title")String title, Long id, Model model)
+	public String getReview(@PathVariable(name="title")String title, Model model)
 	{
 		model.addAttribute("review", reviewRepo.findByTitle(title));
 		return "review";

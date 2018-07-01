@@ -20,10 +20,10 @@ public class CategoryController {
 		return "categories";
 	}
 	
-	@RequestMapping("/categories/{id}")
-	public String getCategory(@PathVariable(name="id")Long id, Model model)
+	@RequestMapping("/categories/{name}")
+	public String getCategory(@PathVariable(name="name")String name, Model model)
 	{
-		model.addAttribute("category", catRepo.findOne(id));
+		model.addAttribute("category", catRepo.findByName(name));
 		return "category";
 	}
 }

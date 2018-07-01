@@ -21,7 +21,7 @@ public class TagController {
 	}
 	
 	@RequestMapping("/reviews/tags/{name}")
-	public String getListOfMoviesFromTag(@PathVariable(name="name")String name,  Model model)
+	public String getListOfMoviesFromTag(@PathVariable(name="name")String name, Model model)
 	{
 		model.addAttribute("tag", tagRepo.findByName(name));
 		return "tag";
