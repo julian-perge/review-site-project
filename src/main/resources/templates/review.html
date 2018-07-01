@@ -2,52 +2,56 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title th:text="${review.title}">Review Title</title>
+	<title th:text="${review.id}">Review Title</title>
 	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 	<link rel="stylesheet" type="text/css" media="all" href="/css/normalize.css" th:href="@{/css/normalize.css}" />
 </head>
 
 <body>
-	<section class="title">
-		<h1 th:text="${review.title}">Review Header</h1>
-	</section>
-
-	<section class="nav">
-		<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
-	</section>
-
-	<section class="main-content">
-
-		<section class="images">
-			<img th:src="|/images/${review.imgUrl}.jpg|" />
-
-
-			<div class="keywords">
-				<section class="category">
-					<h3 th:text="|Category - ${review.category}|"></h3>
-				</section>
-				<section class="tags">
-					<h3>
-						<a th:href="|@{/reviews/tags}|">
-							Tags
-						</a>
-					</h3>
-					<ul>
-						<li th:each="tag : ${review.tags}">
-							<a th:href="|@{/reviews/tags/}${tag.id}|">
-								<span th:text="${tag}"></span>
+	<div class="container">
+		<section class="title">
+			<h1 th:text="${review.title}">Review Header</h1>
+		</section>
+	
+		<section class="nav">
+			<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
+		</section>
+	
+		<section class="main-content">
+	
+			<section class="images">
+				<img th:src="|/images/${review.imgUrl}|" />
+	
+	
+				<div class="keywords">
+					<section class="category">
+						<h3 th:text="|Category - ${review.category}|"></h3>
+					</section>
+					<section class="tags">
+						<h3>
+							<a th:href="|@{/reviews/tags}|">
+								Tags
 							</a>
-						</li>
-					</ul>
-				</section>
-			</div>
+						</h3>
+						<ul>
+							<li th:each="tag : ${review.tags}">
+								<a th:href="|@{/reviews/tags/}${tag.name}|">
+									<span th:text="${tag}"></span>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</section>
+	
+			<section class="content-of-review">
+				<p th:text="${review.content}">
+	
+					</p>
+			</section>
+	
 		</section>
-
-		<section class="content-of-review">
-			<span th:text="${review.content}"></span>
-		</section>
-
-	</section>
+	</div>
 </body>
 
 </html>

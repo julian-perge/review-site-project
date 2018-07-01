@@ -1,3 +1,23 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.review-items, 
+.review-item {
+  display: inline-block
+}
+
+.review-item {
+  width: 30%;
+}
+
 .images, .keywords {
   border: 1px solid black;
 }
@@ -7,6 +27,5 @@
 }
 
 .content-of-review {
-  align-content: center;
   font-style: italic;
 }

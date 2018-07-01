@@ -8,11 +8,26 @@
 
 <body>
 	<h1>List of all tags for published reviews</h1>
+	<section class="nav">
+			<ul>
+				<li>
+					<a th:href="@{/reviews}">Back to list of reviews</a>
+				</li>
+				<li>
+					<a th:href="@{/categories}">Back to list of categories</a>
+	
+				</li>
+				<li>
+					<a th:href="@{/reviews/tags}">Back to list of tags</a>
+				</li>
+			</ul>
+		</section>
+
 
 	<ul>
 		<!-- For each review in reviews map -->
 		<li th:each="tag : ${tags}">
-			<a th:href="|@{/reviews/tags/}${tag.id}|">
+			<a th:href="|@{/reviews/tags/}${tag.name}|">
 				<span th:text="${tag}"></span>
 			</a>
 		</li>

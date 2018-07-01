@@ -1,10 +1,16 @@
-package org.julian.reviewsiteproject;
+package org.julian.reviewsiteproject.repository;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import org.julian.reviewsiteproject.entities.Category;
+import org.julian.reviewsiteproject.entities.Review;
+import org.julian.reviewsiteproject.entities.Tag;
+import org.julian.reviewsiteproject.repository.CategoryRepository;
+import org.julian.reviewsiteproject.repository.ReviewRepository;
+import org.julian.reviewsiteproject.repository.TagRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

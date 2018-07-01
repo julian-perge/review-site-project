@@ -11,20 +11,24 @@
   <h1 th:text="|List of movies from searched tag: ${tag}|"></h1>
   <ul>
     <li th:each="review : ${tag.reviews}">
-      <a th:href="|@{/reviews/}${review.id}|">
+      <a th:href="|@{/reviews/}${review.title}|">
         <span class="reviewList" th:text="|${review.title}|"></span>
       </a>
     </li>
   </ul>
-
   <section class="nav">
-    <h2>
-      <a th:href="@{/reviews}">Back to list of reviews</a>
-    </h2>
-    <h2>
-      <a th:href="@{/reviews/tags}">Back to list of tags</a>
-    </h2>
+      <ul>
+          <li>
+              <a th:href="@{/reviews}">Back to list of reviews</a>
+          </li>
+          <li>
+              <a th:href="@{/categories}">Back to list of categories</a>
 
+          </li>
+          <li>
+              <a th:href="@{/reviews/tags}">Back to list of tags</a>
+          </li>
+      </ul>
   </section>
 </body>
 

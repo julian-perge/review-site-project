@@ -10,15 +10,28 @@
 
 <body>
     <h1 th:text="${category.name}">Single Category</h1>
-    <span th:each="review : ${category.reviews}" th:text="${review}">
+    <ul th:each="review : ${category.reviews}">
+        <a th:href="|@{/reviews/}${review.title}|">
+            <li th:text="${review.title}">
 
-    </span>
+            </li>
+        </a>
+    </ul>
     <section class="nav">
-        <h3><a th:href="@{/reviews}">Back to list of reviews</a></h3>
-        <h3><a th:href="@{/categories}">Back to list of categories</a></h3>
-        <h3><a th:href="@{/reviews/tags}">Back to list of tags</a></h3>
+        <ul>
+            <li>
+                <a th:href="@{/reviews}">Back to list of reviews</a>
+            </li>
+            <li>
+                <a th:href="@{/categories}">Back to list of categories</a>
+
+            </li>
+            <li>
+                <a th:href="@{/reviews/tags}">Back to list of tags</a>
+            </li>
+        </ul>
     </section>
-    
+
 </body>
 
 </html>

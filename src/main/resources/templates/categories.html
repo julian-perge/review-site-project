@@ -10,6 +10,20 @@
 
 <body>
     <h1>All listed Categories</h1>
+    <section class="nav">
+            <ul>
+                <li>
+                    <a th:href="@{/reviews}">Back to list of reviews</a>
+                </li>
+                <li>
+                    <a th:href="@{/categories}">Back to list of categories</a>
+    
+                </li>
+                <li>
+                    <a th:href="@{/reviews/tags}">Back to list of tags</a>
+                </li>
+            </ul>
+        </section>
     <ul>
         <!-- For each category in category repo -->
         <li th:each="category: ${categories}">
