@@ -43,7 +43,7 @@ public class Review
 	@Override
 	public String toString()
 	{
-		return title + " - " + category;
+		return title;
 	}
 
 	public Long getId()
