@@ -3,50 +3,62 @@
 
 <head>
 	<title th:text="${review.id}">Review Title</title>
-	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
-	<link rel="stylesheet" type="text/css" media="all" href="/css/normalize.css" th:href="@{/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="/src/css/style.css" th:href="@{/src/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="/src/css/normalize.css" th:href="@{/src/css/normalize.css}" />
 </head>
 
 <body>
 	<div class="container">
-		<section class="title">
-			<h1 th:text="${review.title}">Review Header</h1>
+		<section class="section-header">
+			<header class="main-header">
+				<h1 th:text="|${review.title} Review|">Movie Review Title</h1>
+			</header>
 		</section>
-
-		<section class="nav">
-			<h2>
-				<a th:href="@{/reviews}">Back to list of reviews</a>
-			</h2>
+		<section class="section-nav">
+			<nav class="main-nav">
+				<ul class="nav-items">
+					<li class="nav-item">
+						<a th:href="@{/reviews}">Reviews</a>
+					</li>
+					<li class="nav-item">
+						<a th:href="@{/categories}">Categories</a>
+					</li>
+					<li class="nav-item">
+						<a th:href="@{/reviews/tags}">List of Tags</a>
+					</li>
+				</ul>
+			</nav>
 		</section>
-
-		<section class="main-content">
-
-			<section class="images">
-				<img th:src="|/images/${review.imgUrl}|" />
-
-
-				<div class="keywords">
-					<section class="category">
-						<h3 th:text="|Category - ${review.category}|"></h3>
-					</section>
-					<section class="tags">
-						<h3>
-							<a th:href="|@{/reviews/tags}|">
-								Tags
-							</a>
-						</h3>
-						<ul>
-							<li th:each="tag : ${review.tags}">
-								<a th:href="|@{/reviews/tags/}${tag.name}|">
-									<span th:text="${tag}"></span>
-								</a>
-							</li>
-						</ul>
-					</section>
-				</div>
+		<div class="main-content">
+			<section class="section-images">
+				<figure class="figure-image">
+					<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
+					<a th:href="|@{/category/}${review.category}|">
+						<figcaption th:text="${review.category}">
+						</figcaption>
+					</a>
+				</figure>
 			</section>
-
-			<section class="review-content" th:utext="${review.content}"></section>
+			<section class="tags">
+				<aside class="keywords">
+					<h3>
+						<a th:href="|@{/reviews/tags}|">
+							Tags
+						</a>
+					</h3>
+					<ul>
+						<li th:each="tag : ${review.tags}">
+							<a th:href="|@{/reviews/tags/}${tag.name}|">
+								<span th:text="${tag}"></span>
+							</a>
+						</li>
+					</ul>
+				</aside>
+			</section>
+		</div>
+		<section class="review-content">
+			<article th:utext="${review.content}">
+			</article>
 		</section>
 	</div>
 </body>
