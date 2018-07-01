@@ -20,7 +20,7 @@ public class CategoryController {
 		return "categories";
 	}
 	
-	@RequestMapping("/categories/{name}")
+	@RequestMapping("/category/{name}")
 	public String getCategory(@PathVariable(name="name")String name, Model model)
 	{
 		model.addAttribute("category", catRepo.findByName(name));
