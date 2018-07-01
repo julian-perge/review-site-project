@@ -12,17 +12,19 @@
 		<section class="title">
 			<h1 th:text="${review.title}">Review Header</h1>
 		</section>
-	
+
 		<section class="nav">
-			<h2><a th:href="@{/reviews}">Back to list of reviews</a></h2>
+			<h2>
+				<a th:href="@{/reviews}">Back to list of reviews</a>
+			</h2>
 		</section>
-	
+
 		<section class="main-content">
-	
+
 			<section class="images">
 				<img th:src="|/images/${review.imgUrl}|" />
-	
-	
+
+
 				<div class="keywords">
 					<section class="category">
 						<h3 th:text="|Category - ${review.category}|"></h3>
@@ -43,13 +45,8 @@
 					</section>
 				</div>
 			</section>
-	
-			<section class="content-of-review">
-				<p th:text="${review.content}">
-	
-					</p>
-			</section>
-	
+
+			<section class="review-content" th:utext="${review.content}"></section>
 		</section>
 	</div>
 </body>

@@ -8,27 +8,31 @@
 </head>
 
 <body>
-  <h1 th:text="|List of movies from searched tag: ${tag}|"></h1>
-  <ul>
-    <li th:each="review : ${tag.reviews}">
-      <a th:href="|@{/reviews/}${review.title}|">
-        <span class="reviewList" th:text="|${review.title}|"></span>
-      </a>
-    </li>
-  </ul>
-  <section class="nav">
-      <ul>
-          <li>
-              <a th:href="@{/reviews}">Back to list of reviews</a>
-          </li>
-          <li>
-              <a th:href="@{/categories}">Back to list of categories</a>
-
-          </li>
-          <li>
-              <a th:href="@{/reviews/tags}">Back to list of tags</a>
-          </li>
+  <section class="section-header">
+    <header class="main-header">
+      <h1 th:text="|List of movies from searched tag: ${tag}|"></h1>
+    </header>
+  </section>
+  <section class="main-nav">
+    <nav>
+      <ul class="nav-items">
+        <li class="nav-item">
+          <a th:href="@{/categories}">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{/reviews/tags}">List of Tags</a>
+        </li>
       </ul>
+    </nav>
+  </section>
+  <section class="tag__reviews">
+    <ul>
+      <li th:each="review : ${tag.reviews}">
+        <a th:href="|@{/reviews/}${review.title}|">
+          <span class="reviewList" th:text="|${review.title}|"></span>
+        </a>
+      </li>
+    </ul>
   </section>
 </body>
 

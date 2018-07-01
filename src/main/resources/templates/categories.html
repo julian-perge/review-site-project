@@ -5,29 +5,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
     <title>All Categories</title>
 </head>
 
 <body>
-    <h1>All listed Categories</h1>
-    <section class="nav">
-            <ul>
-                <li>
-                    <a th:href="@{/reviews}">Back to list of reviews</a>
+    <section class="section-header">
+        <header class="main-header">
+            <h1>List of all catorgies</h1>
+        </header>
+    </section>
+    <section class="main-nav">
+        <nav>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a th:href="@{/categories}">Categories</a>
                 </li>
-                <li>
-                    <a th:href="@{/categories}">Back to list of categories</a>
-    
-                </li>
-                <li>
-                    <a th:href="@{/reviews/tags}">Back to list of tags</a>
+                <li class="nav-item">
+                    <a th:href="@{/reviews/tags}">List of Tags</a>
                 </li>
             </ul>
-        </section>
+        </nav>
+    </section>
+
     <ul>
         <!-- For each category in category repo -->
         <li th:each="category: ${categories}">
-            <a th:href="|@{/categories/}${category.id}|">
+            <a th:href="|@{/categories/}${category.name}|">
                 <span th:text="${category}"></span>
             </a>
         </li>
