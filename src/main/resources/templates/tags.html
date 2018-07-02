@@ -27,11 +27,12 @@
 	<ul>
 		<!-- For each review in reviews map -->
 		<li th:each="tag : ${tags}">
-			<a th:href="|@{/reviews/tags/}${tag.name}|">
+			<a th:href="|@{/tags/}${tag.name}|">
 				<span th:text="${tag}"></span>
 			</a>
 		</li>
 	</ul>
+	<script src="../static/src/js/app.js"></script>
 </body>
 
 </html>

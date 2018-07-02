@@ -36,9 +36,9 @@ public class TagControllerTest
 	public void shouldReturnModelAndViewOfAllTagsAndIs2xxSuccessful() throws Exception
 	{
 		mvc.perform(get("/tags"))
-										.andExpect(view().name(is(equalTo("tags"))))
-										.andExpect(model().attribute("tags", is(tagRepo.findAll())))
-										.andExpect(status().is2xxSuccessful());
+								.andExpect(view().name(is(equalTo("tags"))))
+								.andExpect(model().attribute("tags", is(tagRepo.findAll())))
+								.andExpect(status().is2xxSuccessful());
 	}
 	
 	@Test
@@ -47,8 +47,8 @@ public class TagControllerTest
 		given(tagRepo.findByName("name")).willReturn(tag);
 		
 		mvc.perform(get("/tags/name"))
-										.andExpect(view().name(is(equalTo("tag"))))
-										.andExpect(model().attribute("tag", is(tag)))
-										.andExpect(status().is2xxSuccessful());
+									.andExpect(view().name(is(equalTo("tag"))))
+									.andExpect(model().attribute("tag", is(tag)))
+									.andExpect(status().is2xxSuccessful());
 	}
 }
