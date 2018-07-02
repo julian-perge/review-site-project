@@ -29,7 +29,26 @@
   width: 47%;
 }
 .tags {
-  widows: 15%;
+  width: 15%;
+  border: 1px solid black;
+}
+
+.tags__h3 {
+  font-size: 1.5em;
+}
+
+.tags__h3,
+.tags__item {
+  padding: 0.5em;
+}
+
+.image__figcaption {
+  padding: 1.25em 0;
+  font-size: 1.25em;
+}
+
+.tags__item {
+  list-style: none;
 }
 
 .section-images,

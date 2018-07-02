@@ -24,10 +24,10 @@
 			</ul>
 		</nav>
 	</section>
-	<ul>
+	<ul class="review-items">
 		<!-- For each review in reviews map -->
-		<li th:each="tag : ${tags}">
-			<a th:href="|@{/reviews/tags/}${tag.name}|">
+		<li class="review-item" th:each="tag : ${tags}">
+			<a th:href="|@{/tags/}${tag.name}|">
 				<span th:text="${tag}"></span>
 			</a>
 		</li>

@@ -34,20 +34,20 @@
 				<figure class="figure-image">
 					<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
 					<a th:href="|@{/category/}${review.category}|">
-						<figcaption th:text="${review.category}">
+						<figcaption class="image__figcaption" th:text="${review.category}">
 						</figcaption>
 					</a>
 				</figure>
 			</section>
 			<section class="tags">
 				<aside class="keywords">
-					<h3>
-						<a th:href="|@{/reviews/tags}|">
+					<h3 class="tags__h3">
+						<a th:href="|@{/tags}|">
 							Tags
 						</a>
 					</h3>
-					<ul>
-						<li th:each="tag : ${review.tags}">
+					<ul class="tags__items">
+						<li class="tags__item" th:each="tag : ${review.tags}">
 							<a th:href="|@{/tags/}${tag.name}|">
 								<span th:text="${tag}"></span>
 							</a>
@@ -63,5 +63,4 @@
 	</div>
 	<script src="../static/src/js/app.js"></script>
 </body>
-
 </html>

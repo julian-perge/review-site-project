@@ -23,16 +23,20 @@
           <a th:href="@{/categories}">Categories</a>
         </li>
         <li class="nav-item">
-          <a th:href="@{/reviews/tags}">List of Tags</a>
+          <a th:href="@{/tags}">List of Tags</a>
         </li>
       </ul>
     </nav>
   </section>
   <section class="tag__reviews">
-    <ul>
-      <li th:each="review : ${tag.reviews}">
+    <ul class="review-items">
+      <li class="review-item" th:each="review : ${tag.reviews}">
         <a th:href="|@{/reviews/}${review.title}|">
           <span class="reviewList" th:text="|${review.title}|"></span>
+          <figure>
+            <img th:src="|/src/images/${review.imgUrl}|" alt="review image" />
+            <figcaption th:each="tag : ${review.tags}" th:text="${tag}">Review Image Title</figcaption>
+          </figure>
         </a>
       </li>
     </ul>

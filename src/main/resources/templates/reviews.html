@@ -35,8 +35,7 @@
 						<figure>
 							<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
 							<a th:href="|@{/category/}${review.category}|">
-								<figcaption th:text="${review.category}">
-								</figcaption>
+								<figcaption th:text="${review.category}"></figcaption>
 							</a>
 						</figure>
 					</a>
