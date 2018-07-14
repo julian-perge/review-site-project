@@ -29,38 +29,50 @@
 				</ul>
 			</nav>
 		</section>
-		<div class="main-content">
-			<section class="section-images">
-				<figure class="figure-image">
-					<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
-					<a th:href="|@{/category/}${review.category}|">
-						<figcaption class="image__figcaption" th:text="${review.category}">
-						</figcaption>
+		<main class="main-content">
+			<figure class="figure-image">
+				<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
+				<a th:href="|@{/category/}${review.category}|">
+					<figcaption class="image__figcaption" th:text="${review.category}">
+					</figcaption>
+				</a>
+			</figure>
+			<aside class="keywords">
+				<span th:each="revComment : ${review.reviewComments}">
+						<span th:text="${revComment}"></span>
+				</span>
+				<h3 class="tags__h3">
+					<a th:href="|@{/tags}|">
+						Tags
 					</a>
-				</figure>
-			</section>
-			<section class="tags">
-				<aside class="keywords">
-					<h3 class="tags__h3">
-						<a th:href="|@{/tags}|">
-							Tags
+				</h3>
+				<ul class="tags">
+					<li class="tag" th:each="tag : ${review.tags}">
+						<a th:href="|@{/tags/}${tag.name}|">
+							<span th:text="${tag}"></span>
 						</a>
-					</h3>
-					<ul class="tags__items">
-						<li class="tags__item" th:each="tag : ${review.tags}">
-							<a th:href="|@{/tags/}${tag.name}|">
-								<span th:text="${tag}"></span>
-							</a>
-						</li>
-					</ul>
-				</aside>
+						<button class="delete">REMOVE</button>
+					</li>
+				</ul>
+			</aside>
+			<section class="review-content">
+				<article th:utext="${review.content}">
+				</article>
 			</section>
-		</div>
-		<section class="review-content">
-			<article th:utext="${review.content}">
-			</article>
-		</section>
+			<section class="review-comments">
+				<form action="/post-comment" th:action="|@{/reviews/}${review.title}|" method="post">
+					<label for="comment-title">
+						<input type="text" name="commentTitle" id="commentTitle" />
+					</label>
+					<label for="comment-description">
+						<input type="text" name="commentDescription" id="commentDescription" />
+					</label>
+					<input type="submit" value="Submit" />
+				</form>
+			</section>
+		</main>
 	</div>
-	<script src="../static/src/js/app.js"></script>
+	<script type="text/js" src="/js/app.js"></script>
 </body>
+
 </html>

@@ -7,42 +7,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Category
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Category {
+  @Id @GeneratedValue private Long id;
 
-	private String name;
+  private String name;
 
-	@OneToMany(mappedBy = "category")
-	private Collection<Review> reviews;
+  @JsonIgnore
+  @OneToMany(mappedBy = "category")
+  private Collection<Review> reviews;
 
-	protected Category() {}
+  protected Category() {}
 
-	public Category(String name)
-	{
-		this.name = name;
-	}
-	
-	public Collection<Review> getReviews() {
-		return reviews;
-	}
+  public Category(String name) {
+    this.name = name;
+  }
 
-	@Override
-	public String toString()
-	{
-		return name;
-	}
+  public Collection<Review> getReviews() {
+    return reviews;
+  }
 
-	public String getName()
-	{
-		return name;
-	}
+  @Override
+  public String toString() {
+    return name;
+  }
 
-	public Long getId()
-	{
-		return id;
-	}
+  public String getName() {
+    return name;
+  }
+
+  public Long getId() {
+    return id;
+  }
 }

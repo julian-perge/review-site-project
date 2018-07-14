@@ -1,9 +1,8 @@
 package org.julian.reviewsiteproject.repository;
 
-import java.util.Formatter;
-
 import org.julian.reviewsiteproject.entities.Category;
 import org.julian.reviewsiteproject.entities.Review;
+import org.julian.reviewsiteproject.entities.ReviewComment;
 import org.julian.reviewsiteproject.entities.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -40,7 +39,7 @@ public class ReviewSitePopulator implements CommandLineRunner
 		Review terminatorReview 
 			= reviewRepo.save(new Review("Terminator", "terminatorReviewImg.jpg", terminatorContent, 
 					catAction, tagWar, tagCyborg, tagTimeTravel, tagTesting));
-				
+		
 		Review theShiningReview
 			= reviewRepo.save(new Review("The Shining", "theShiningReviewImg.jpg", theShiningContent, 
 					catHorror, tagHotel, tagTwins, tagIsolate, tagTesting));

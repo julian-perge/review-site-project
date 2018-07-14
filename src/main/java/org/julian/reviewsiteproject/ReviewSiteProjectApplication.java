@@ -9,4 +9,4 @@ public class ReviewSiteProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ReviewSiteProjectApplication.class, args);
 	}
-}
+} 
