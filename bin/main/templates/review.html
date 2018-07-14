@@ -60,12 +60,15 @@
 				</article>
 			</section>
 			<section class="review-comments">
-				<form action="/post-comment" th:action="|@{/reviews/}${review.title}|" method="post">
+				<form th:action="|@{/reviews/}${review.title}|" th:object="${reviewComment}" method="post">
 					<label for="comment-title">
-						<input type="text" name="commentTitle" id="commentTitle" />
+						<input type="text" name="commentTitle" th:field="*{title}" id="commentTitle" />
 					</label>
 					<label for="comment-description">
-						<input type="text" name="commentDescription" id="commentDescription" />
+						<input type="text" name="commentDescription" th:field="*{description}" id="commentDescription" />
+					</label>
+					<label for="reviewComment">
+						<input type="text" th:field="*{review}" th:text="${review}" />
 					</label>
 					<input type="submit" value="Submit" />
 				</form>

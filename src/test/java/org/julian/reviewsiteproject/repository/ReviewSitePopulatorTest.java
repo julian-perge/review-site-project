@@ -30,52 +30,50 @@ public class ReviewSitePopulatorTest {
   @Mock private Review review;
   @Mock private ReviewComment reviewComment;
 
-  @Before
-  public void before() {
-    Category catTest = catRepo.save(new Category("Test Category"));
-    Tag tagTest = tagRepo.save(new Tag("Test Tag"));
-    Review revTest =
-        reviewRepo.save(
-            new Review("TestTitle", "terminatorReviewImg", "ayyy lmao", catTest, tagTest));
-  }
-
-  @Test
-  public void populatorShouldSaveandLoadReview() throws Exception {
-    Review testReview = reviewRepo.findOne(1L);
-    assertThat(testReview.getTitle(), is(equalTo("TestTitle")));
-  }
-
-  @Test
-  public void populatorShouldGenerateReviewId() throws Exception {
-    assertTrue(reviewRepo.exists(1l));
-  }
-
-  @Test
-  public void populatorShouldSaveTagToReview() throws Exception {
-    Review testReview = reviewRepo.findOne(1L);
-    Tag underTestTag = tagRepo.findOne(1L);
-    assertTrue(testReview.getTags().contains(underTestTag));
-  }
-
+  //  @Before
+  //  public void before() {
+  //    Category catTest = catRepo.save(new Category("Test Category"));
+  //    Tag tagTest = tagRepo.save(new Tag("Test Tag"));
+  //    Review revTest =
+  //        reviewRepo.save(
+  //            new Review("TestTitle", "terminatorReviewImg", "ayyy lmao", catTest, tagTest));
+  //  }
+  //
+  //  @Test
+  //  public void populatorShouldSaveandLoadReview() throws Exception {
+  //    Review testReview = reviewRepo.findOne(1L);
+  //    assertThat(testReview.getTitle(), is(equalTo("TestTitle")));
+  //  }
+  //
+  //  @Test
+  //  public void populatorShouldGenerateReviewId() throws Exception {
+  //    assertTrue(reviewRepo.exists(1l));
+  //  }
+  //
+  //  @Test
+  //  public void populatorShouldSaveTagToReview() throws Exception {
+  //    Review testReview = reviewRepo.findOne(1L);
+  //    Tag underTestTag = tagRepo.findOne(1L);
+  //    assertTrue(testReview.getTags().contains(underTestTag));
+  //  }
+  //
   @Test
   public void populatorShouldSaveCommentToReview() throws Exception {
-    given(reviewRepo.findByTitle("ReviewTitle").getReviewComments().iterator().next())
-        .willReturn(reviewComment);
     given(reviewRepo.findByTitle("ReviewTitle")).willReturn(review);
 
     reviewRepo.findByTitle("ReviewTitle").addReviewComment(reviewComment);
 
     assertThat(review.getReviewComments().size(), greaterThan(0));
   }
-
-  @Test
-  public void populatorShouldFindReviewsForCategory() throws Exception {
-    Category testCat = catRepo.findOne(1L);
-    Tag underTestTag = tagRepo.findOne(1L);
-    Review testReview = reviewRepo.findOne(1L);
-    Review testReview2 =
-        reviewRepo.save(
-            new Review("TestTitle2", "testImgUrl2", "ayyy lmao2", testCat, underTestTag));
-    assertThat(testCat.getReviews().size(), is(equalTo(2)));
-  }
+  //
+  //  @Test
+  //  public void populatorShouldFindReviewsForCategory() throws Exception {
+  //    Category testCat = catRepo.findOne(1L);
+  //    Tag underTestTag = tagRepo.findOne(1L);
+  //    Review testReview = reviewRepo.findOne(1L);
+  //    Review testReview2 =
+  //        reviewRepo.save(
+  //            new Review("TestTitle2", "testImgUrl2", "ayyy lmao2", testCat, underTestTag));
+  //    assertThat(testCat.getReviews().size(), is(equalTo(2)));
+  //  }
 }

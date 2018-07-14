@@ -1,5 +1,7 @@
 package org.julian.reviewsiteproject.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -8,28 +10,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class ReviewComment {
-  @Id @GeneratedValue private Long id;
+@Embeddable
+public class ReviewCommentEmbed {
 
+  @Column(name = "REVCOM_TITLE")
   private String title;
-  @Lob private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "REVIEW_ID")
-  private Review review;
+  @Column(name = "REVCOM_DESCRIPTION")
+  @Lob
+  private String description;
 
-  public ReviewComment() {}
+  protected ReviewCommentEmbed() {}
 
-  public ReviewComment(String title, String description, Review review) {
+  public ReviewCommentEmbed(String title, String description) {
     this.title = title;
     this.description = description;
-    this.review = review;
-  }
-
-  @Override
-  public String toString() {
-    return title;
   }
 
   @Override
@@ -37,8 +32,6 @@ public class ReviewComment {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((description == null) ? 0 : description.hashCode());
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((review == null) ? 0 : review.hashCode());
     result = prime * result + ((title == null) ? 0 : title.hashCode());
     return result;
   }
@@ -48,24 +41,19 @@ public class ReviewComment {
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
-    ReviewComment other = (ReviewComment) obj;
+    ReviewCommentEmbed other = (ReviewCommentEmbed) obj;
     if (description == null) {
       if (other.description != null) return false;
     } else if (!description.equals(other.description)) return false;
-    if (id == null) {
-      if (other.id != null) return false;
-    } else if (!id.equals(other.id)) return false;
-    if (review == null) {
-      if (other.review != null) return false;
-    } else if (!review.equals(other.review)) return false;
     if (title == null) {
       if (other.title != null) return false;
     } else if (!title.equals(other.title)) return false;
     return true;
   }
 
-  public Review getReview() {
-    return review;
+  @Override
+  public String toString() {
+    return title;
   }
 
   public String getTitle() {
