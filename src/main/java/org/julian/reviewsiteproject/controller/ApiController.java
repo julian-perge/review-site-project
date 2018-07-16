@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,6 +42,13 @@ public class ApiController {
     tagRepo.delete(tagToDelete.getId());
     return reviewRepo.findByTitle(title).getTags();
   }
+  
+  @RequestMapping(value = "/reviews/{title}/add-tag", method = RequestMethod.POST)
+  public Collection<Tag> addTag(@PathVariable(name="title") String reviewTitle,
+		  @RequestParam String tagName) {
+	  Tag tagToAdd = tagRepo.save(new Tag(tagName, reviewRepo.findByTitle(reviewTitle)));
+	  return (Collection<Tag>) tagRepo.findAll();
+  }
 
   /* Category Repository */
 
@@ -65,6 +73,7 @@ public class ApiController {
   public Tag getCourse(@PathVariable(name = "name") String name) {
     return tagRepo.findByName(name);
   }
+
 
   @RequestMapping(value = "/tags/{name}", method = RequestMethod.DELETE)
   public Collection<Tag> deleteTag(@PathVariable(value = "name") String name) {

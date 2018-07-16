@@ -4,7 +4,8 @@
 <head>
 	<title th:text="${review.id}">Review Title</title>
 	<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
-	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}"
+	/>
 </head>
 
 <body>
@@ -30,39 +31,49 @@
 			</nav>
 		</section>
 		<main class="main">
-			<figure class="figure-image">
-				<img th:src="|/images/${review.imgUrl}|" alt="image for review" />
-				<a th:href="|@{/category/}${review.category}|">
-					<figcaption class="image__figcaption" th:text="${review.category}">
-					</figcaption>
+			<section class="main-section-image">
+				<a class="review-image-link" th:href="|@{/reviews/}${review.title}|">
+					<figure>
+						<img th:src="|/images/${review.imgUrl}|" alt="image for review" />
+					</figure>
 				</a>
-			</figure>
-			<aside class="tags">
-				<h3 class="tags-h3">
-					<a th:href="|@{/tags}|">
-						Tags
+				<aside class="keywords">
+					<a class="review-category-link" th:href="|@{/category/}${review.category}|">
+						<h3 class="category-caption" th:text="${review.category}"></h3>
 					</a>
-				</h3>
-				<ul class="review-tags">
-					<li class="review-tag" th:each="tag : ${review.tags}">
-						<a th:href="|@{/tags/}${tag.name}|">
-							<span th:text="${tag}"></span>
+					<h3 class="tags-h3">
+						<a th:href="|@{/tags}|">
+							Tags
 						</a>
-						<button class="delete">REMOVE</button>
-					</li>
-				</ul>
-			</aside>
-			<section class="review-content">
+					</h3>
+					<ul class="review-tags">
+						<li class="review-tag" th:each="tag : ${review.getTags()}">
+							<a th:href="|@{/tags/}${tag.name}|">
+								<span th:text="${tag}"></span>
+							</a>
+							<button class="delete">REMOVE</button>
+						</li>
+					</ul>
+					<form class="review-tag__form" th:action="|@{/reviews/}${review.title}/addTag|" method="POST">
+						<label for="tagName">
+							<input type="text" name="tagName" placeholder="tag name" />
+						</label>
+						<input type="submit" value="Submit" />
+					</form>
+				</aside>
+			</section>
+
+			<section class="section-review-content">
 				<article th:utext="${review.content}">
 				</article>
 			</section>
 			<section class="section-review-comments">
 				<form class="review-comment__form" action="#" th:action="|@{/reviews/}${review.title}|" th:object="${reviewComment}" method="post">
 					<label for="comment-title">
-						<input type="text" th:field="*{title}" />
+						<input type="text" th:field="*{title}" placeholder="Comment title" />
 					</label>
 					<label for="comment-description">
-						<input type="text" th:field="*{description}" />
+						<input type="text" th:field="*{description}" placeholder="description" />
 					</label>
 					<!-- <label for="reviewComment">
 						<input type="text" th:field="${review}" th:text="${review}" />
