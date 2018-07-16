@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/")
@@ -20,6 +20,11 @@ public class ReviewsController {
 
   // localhost:8080/reviews
   // thuglyfe
+
+  @RequestMapping("/")
+  public String home() {
+    return "redirect:/reviews";
+  }
 
   @RequestMapping("/reviews")
   public String getReviews(Model model) {
@@ -38,16 +43,11 @@ public class ReviewsController {
   @RequestMapping(value = "/reviews/{title}", method = RequestMethod.POST)
   public String postComment(
       @PathVariable(name = "title") String reviewTitle,
-      @RequestAttribute("reviewComment") ReviewComment reviewComment) {
+      @RequestParam String title,
+      @RequestParam String description) {
     Review review = reviewRepo.findByTitle(reviewTitle);
-    if (review == null) {
-      // do nothing
-    } else {
-      commentRepo.save(reviewComment);
-      System.out.println("COMMENT BEFORE ADDING: ");
-      //      review.getRevComEmbed().add(embed);
-      System.out.println(review.getRevComEmbed());
-      //      embed = null;
+    if (review != null) {
+      ReviewComment comment = commentRepo.save(new ReviewComment(title, description, review));
     }
     return "redirect:/reviews/{title}";
   }

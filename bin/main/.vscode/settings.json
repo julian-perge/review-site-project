@@ -1,2 +1,4 @@
 {
+  "editor.tabSize": 2,
+  "eslint.nodePath": "C:/Users/Julian/AppData/Roaming/npm/node_modules/eslint-config-airbnb-bundle/node_modules/eslint"
 }

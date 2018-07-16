@@ -1,10 +1,8 @@
 package org.julian.reviewsiteproject.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
@@ -15,9 +13,7 @@ public class ReviewComment {
   private String title;
   @Lob private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "REVIEW_ID")
-  private Review review;
+  @ManyToOne private Review review;
 
   public ReviewComment() {}
 

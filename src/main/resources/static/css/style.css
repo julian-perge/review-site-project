@@ -1,0 +1,112 @@
+html {
+    font-size: 16px;
+    background-image: linear-gradient(to top, whitesmoke, hotpink);
+    color: #fff;
+    min-height: 100vh;
+    min-width: 300px;
+    overflow-x: hidden;
+}
+
+a {
+    color: currentColor;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 3. Specfic */
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.section-header {
+    margin: 1em;
+    position: relative;
+}
+
+.main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-header {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 50px;
+    width: 100vw;
+}
+
+.main-header>h1 {
+    font-size: 1.5rem;
+}
+
+.main-reviews {
+    width: 100%;
+}
+
+.section-nav {
+    margin-bottom: 1em;
+}
+
+.main-nav {
+    width: 100vw;
+}
+
+.nav-items {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-item {
+    border: 3px solid;
+    padding: 0.5em 1em;
+}
+
+.review-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.review-item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+}
+
+.review-item a {
+    padding: 0.5em 1em;
+    color: black;
+}
+
+.review-title-link {
+    border: 3px solid whitesmoke;
+}
+
+.review-category-link {
+    border: 3px solid hotpink;
+}
+
+.section-review-comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-comment__form,
+.review-comment {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.category-caption {
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: white 0 2px 5px;
+}

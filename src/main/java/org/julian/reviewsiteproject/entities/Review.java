@@ -1,12 +1,8 @@
 package org.julian.reviewsiteproject.entities;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,17 +18,19 @@ public class Review {
   private String title;
   private String imgUrl;
 
-  @ManyToMany private Collection<Tag> tags;
+  @ManyToMany
+  private Collection<Tag> tags;
+
+  public Collection<Tag> getTags() {
+    return tags;
+  }
 
   @ManyToOne private Category category;
 
   @OneToMany(mappedBy = "review")
   private Collection<ReviewComment> reviewComments;
-  
-  @ElementCollection
-  private Collection<ReviewCommentEmbed> revComEmbed;
 
-  @Lob private String content; 
+  @Lob private String content;
 
   protected Review() {}
 
@@ -42,10 +40,6 @@ public class Review {
     this.content = content;
     this.category = category;
     this.tags = Arrays.asList(tags);
-  }
-  
-  public void addReviewCommentEmbed(ReviewCommentEmbed comment) {
-	  revComEmbed.add(comment);
   }
 
   @Override
@@ -71,14 +65,6 @@ public class Review {
 
   public String getContent() {
     return content;
-  }
-
-  public Collection<Tag> getTags() {
-    return tags;
-  }
-  
-  public Collection<ReviewCommentEmbed> getRevComEmbed() {
-	  return revComEmbed;
   }
 
   public Collection<ReviewComment> getReviewComments() {

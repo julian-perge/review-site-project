@@ -2,7 +2,6 @@ package org.julian.reviewsiteproject.repository;
 
 import org.julian.reviewsiteproject.entities.Category;
 import org.julian.reviewsiteproject.entities.Review;
-import org.julian.reviewsiteproject.entities.ReviewComment;
 import org.julian.reviewsiteproject.entities.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
