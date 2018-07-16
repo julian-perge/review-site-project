@@ -37,16 +37,13 @@
 					</figcaption>
 				</a>
 			</figure>
-			<aside class="keywords">
-				<span th:each="revComment : ${review.reviewComments}">
-						<span th:text="${revComment}"></span>
-				</span>
-				<h3 class="tags__h3">
+			<aside class="tags">
+				<h3 class="tags-h3">
 					<a th:href="|@{/tags}|">
 						Tags
 					</a>
 				</h3>
-				<ul class="tags">
+				<ul class="tags-items">
 					<li class="tag" th:each="tag : ${review.tags}">
 						<a th:href="|@{/tags/}${tag.name}|">
 							<span th:text="${tag}"></span>
@@ -55,6 +52,9 @@
 					</li>
 				</ul>
 			</aside>
+			<span th:each="revComment : ${review.reviewComments}">
+				<span th:text="${revComment}"></span>
+		</span>
 			<section class="review-content">
 				<article th:utext="${review.content}">
 				</article>
@@ -78,4 +78,4 @@
 	<script type="text/js" src="/js/app.js"></script>
 </body>
 
-</html>
+</html>	
