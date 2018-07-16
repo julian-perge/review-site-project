@@ -3,8 +3,8 @@
 
 <head>
 	<title th:text="${review.id}">Review Title</title>
-	<link rel="stylesheet" type="text/css" media="all" href="/src/css/style.css" th:href="@{/src/css/style.css}" />
-	<link rel="stylesheet" type="text/css" media="all" href="/src/css/normalize.css" th:href="@{/src/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
 </head>
 
 <body>
@@ -29,25 +29,22 @@
 				</ul>
 			</nav>
 		</section>
-		<main class="main-content">
+		<main class="main">
 			<figure class="figure-image">
-				<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
+				<img th:src="|/images/${review.imgUrl}|" alt="image for review" />
 				<a th:href="|@{/category/}${review.category}|">
 					<figcaption class="image__figcaption" th:text="${review.category}">
 					</figcaption>
 				</a>
 			</figure>
-			<aside class="keywords">
-				<span th:each="revComment : ${review.reviewComments}">
-						<span th:text="${revComment}"></span>
-				</span>
-				<h3 class="tags__h3">
+			<aside class="tags">
+				<h3 class="tags-h3">
 					<a th:href="|@{/tags}|">
 						Tags
 					</a>
 				</h3>
-				<ul class="tags">
-					<li class="tag" th:each="tag : ${review.tags}">
+				<ul class="review-tags">
+					<li class="review-tag" th:each="tag : ${review.tags}">
 						<a th:href="|@{/tags/}${tag.name}|">
 							<span th:text="${tag}"></span>
 						</a>
@@ -59,23 +56,30 @@
 				<article th:utext="${review.content}">
 				</article>
 			</section>
-			<section class="review-comments">
-				<form th:action="|@{/reviews/}${review.title}|" th:object="${reviewComment}" method="post">
+			<section class="section-review-comments">
+				<form class="review-comment__form" action="#" th:action="|@{/reviews/}${review.title}|" th:object="${reviewComment}" method="post">
 					<label for="comment-title">
-						<input type="text" name="commentTitle" th:field="*{title}" id="commentTitle" />
+						<input type="text" th:field="*{title}" />
 					</label>
 					<label for="comment-description">
-						<input type="text" name="commentDescription" th:field="*{description}" id="commentDescription" />
+						<input type="text" th:field="*{description}" />
 					</label>
-					<label for="reviewComment">
-						<input type="text" th:field="*{review}" th:text="${review}" />
-					</label>
+					<!-- <label for="reviewComment">
+						<input type="text" th:field="${review}" th:text="${review}" />
+					</label> -->
 					<input type="submit" value="Submit" />
 				</form>
+				<article class="review-comments">
+					<span class="review-comment" th:each="revComment : ${review.reviewComments}">
+						<p th:text="${revComment.title}"></p>
+						<p th:text="${revComment.description}"></p>
+						<button class="delete">REMOVE COMMENT</button>
+					</span>
+				</article>
 			</section>
 		</main>
 	</div>
-	<script type="text/js" src="/js/app.js"></script>
+	<script src="../static/js/app.js" th:src="@{/js/app.js}"></script>
 </body>
 
 </html>
