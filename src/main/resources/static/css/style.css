@@ -1,0 +1,33 @@
+html {
+    font-size: 16px;
+    min-height: 100vh;
+    min-width: 300px;
+    overflow-x: hidden;
+}
+
+/* 3. Specfic */
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-review-comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-comment__form,
+.review-comment {
+    display: inline-flex;
+    flex-direction: column;
+}
