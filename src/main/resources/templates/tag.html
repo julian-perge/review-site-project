@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <title th:text="|Tag searched: ${tag}|"></title>
-  <link rel="stylesheet" type="text/css" media="all" href="/src/css/style.css" th:href="@{/src/css/style.css}" />
+  <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
 </head>
 
 <body>
@@ -34,14 +35,14 @@
         <a th:href="|@{/reviews/}${review.title}|">
           <span class="reviewList" th:text="|${review.title}|"></span>
           <figure>
-            <img th:src="|/src/images/${review.imgUrl}|" alt="review image" />
+            <img th:src="|/images/${review.imgUrl}|" alt="review image" />
             <figcaption th:each="tag : ${review.tags}" th:text="${tag}">Review Image Title</figcaption>
           </figure>
         </a>
       </li>
     </ul>
   </section>
-  <script src="../static/src/js/app.js"></script>
+  <script src="../static/src/js/app.js" th:src="@{/js/app.js}"></script>
 </body>
 
 </html>
