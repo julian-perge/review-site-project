@@ -3,7 +3,8 @@
 
 <head>
 	<title>All Tags</title>
-	<link rel="stylesheet" type="text/css" media="all" href="/src/css/style.css" th:href="@{/src/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
 </head>
 
 <body>
@@ -24,15 +25,15 @@
 			</ul>
 		</nav>
 	</section>
-	<ul class="review-items">
-		<!-- For each review in reviews map -->
-		<li class="review-item" th:each="tag : ${tags}">
+	<ul class="review-tags">
+		<li class="review-tag" th:each="tag : ${tags}">
 			<a th:href="|@{/tags/}${tag.name}|">
 				<span th:text="${tag}"></span>
 			</a>
+			<button class="delete">REMOVE</button>
 		</li>
 	</ul>
-	<script src="../static/src/js/app.js"></script>
+	<script src="../static/js/app.js" th:src="@{/js/app.js}"></script>
 </body>
 
 </html>

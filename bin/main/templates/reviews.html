@@ -3,7 +3,8 @@
 
 <head>
 	<title>All Reviews</title>
-	<link rel="stylesheet" type="text/css" media="all" href="/src/css/style.css" th:href="@{/src/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
 </head>
 
 <body>
@@ -33,17 +34,17 @@
 					<a class="review-title" th:href="|@{/reviews/}${review.title}|">
 						<span th:text="${review}"></span>
 						<figure>
-							<img th:src="|/src/images/${review.imgUrl}|" alt="image for review" />
+							<img th:src="|/images/${review.imgUrl}|" alt="image for review" />
 							<a th:href="|@{/category/}${review.category}|">
 								<figcaption th:text="${review.category}"></figcaption>
 							</a>
 						</figure>
 					</a>
-				</li>
+				</li>0
 			</ul>
 		</section>
 	</div>
-	<script src="../static/src/js/app.js"></script>
+	<!-- <script src="/static/js/app.js"></script> -->
 </body>
 
 </html>
