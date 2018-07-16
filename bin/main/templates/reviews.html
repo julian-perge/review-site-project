@@ -4,7 +4,8 @@
 <head>
 	<title>All Reviews</title>
 	<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}" />
-	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}" />
+	<link rel="stylesheet" type="text/css" media="all" href="../static/css/minireset.min.css" th:href="@{/css/minireset.min.css}"
+	/>
 </head>
 
 <body>
@@ -31,16 +32,18 @@
 				<!-- For each review in reviews database -->
 				<li class="review-item" th:each="review : ${reviews}">
 					<!-- link that review to the URL of the review's title-->
-					<a class="review-title" th:href="|@{/reviews/}${review.title}|">
-						<span th:text="${review}"></span>
+					<a class="review-title-link" th:href="|@{/reviews/}${review.title}|" 
+							th:text="${review}">
+					</a>
+					<a class="review-image-link" th:href="|@{/reviews/}${review.title}|">
 						<figure>
 							<img th:src="|/images/${review.imgUrl}|" alt="image for review" />
-							<a th:href="|@{/category/}${review.category}|">
-								<figcaption th:text="${review.category}"></figcaption>
-							</a>
 						</figure>
 					</a>
-				</li>0
+					<a class="review-category-link" th:href="|@{/category/}${review.category}|">
+						<figcaption class="category-caption" th:text="${review.category}"></figcaption>
+					</a>
+				</li>
 			</ul>
 		</section>
 	</div>
